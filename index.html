@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roblox Trend Radar · Bithouse Studio</title>
+<meta name="description" content="Radar de tendências do Roblox da Bithouse Studio: dados de Roblox, mercado e internet normalizados em um Trend Score de 0 a 100.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4F7EF1; --gold:#FFD151; --white:#fff; --slate:#3B4558; --ink:#262F44;
+  --green:#55D6A0; --red:#EF6354; --bg:#EAF0FC; --grid:#D6E0F5; --muted:#6B7690;
+  --bd:3px solid var(--ink); --sh:0 5px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{
+  font:400 15px/1.5 "Open Sans",system-ui,sans-serif;color:var(--slate);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+body::before,body::after{content:"";display:block;height:10px;background:var(--ink)}
+body::after{position:fixed;bottom:0;left:0;right:0;z-index:50}
+h1,h2,h3,.num{font-family:Nunito,sans-serif;color:var(--ink);font-weight:900}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.card{background:var(--white);border:var(--bd);border-radius:18px;box-shadow:var(--sh)}
+.pill{display:inline-flex;align-items:center;gap:6px;font:800 11px Nunito;padding:3px 10px;border-radius:99px;border:2px solid var(--ink);background:#fff;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted);border:2px solid var(--ink)}
+.ok .dot{background:var(--green)} .error .dot{background:var(--red)}
+.needs_key .dot,.link_only .dot{background:var(--gold)} .unavailable .dot{background:#9aa3b5}
+
+/* header */
+header{padding:26px 0 8px}
+.top{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:84px;mix-blend-mode:multiply}
+.brand h1{font-size:clamp(26px,4vw,40px);line-height:1}
+.brand small{display:block;font:700 13px "Open Sans";letter-spacing:.14em;color:var(--slate);margin-top:6px}
+.live{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.live .card{padding:8px 14px;border-radius:14px;box-shadow:0 3px 0 var(--ink);font:700 13px Nunito;color:var(--ink)}
+.pulse{width:11px;height:11px;border-radius:50%;background:var(--green);border:2px solid var(--ink);display:inline-block;margin-right:7px;animation:p 1.6s infinite}
+.stale .pulse{background:var(--gold);animation:none}
+@keyframes p{50%{box-shadow:0 0 0 6px rgba(85,214,160,.35)}}
+button{font:800 13px Nunito;cursor:pointer;border:var(--bd);background:var(--gold);color:var(--ink);border-radius:12px;padding:8px 14px;box-shadow:0 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+button:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}
+.banner{margin:14px 0 0;padding:10px 16px;background:var(--gold);border:var(--bd);border-radius:14px;font-weight:700;color:var(--ink);display:none}
+
+section{margin-top:34px}
+.sec-title{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.sec-title h2{font-size:24px} .sec-title span{color:var(--muted);font-size:13px}
+
+/* funil */
+.funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.col{padding:16px}
+.col h3{font-size:15px;letter-spacing:.08em;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.col h3 i{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);display:inline-block}
+.src{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:2px dashed var(--grid)}
+.src:first-of-type{border-top:0}
+.src a{font:800 14px Nunito;text-decoration:none;color:var(--ink)} .src a:hover{color:var(--blue)}
+.src em{display:block;font:400 12px "Open Sans";color:var(--muted);font-style:normal}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:14px 0}
+.arrow{font:900 22px Nunito;color:var(--ink);line-height:1}
+.step{padding:10px 22px;border-radius:14px;border:var(--bd);background:var(--blue);color:#fff;font:900 15px Nunito;letter-spacing:.06em;box-shadow:0 3px 0 var(--ink);text-transform:uppercase}
+.step.gold{background:var(--gold);color:var(--ink)}
+.buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%}
+.bucket{padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:transform .1s}
+.bucket:hover{transform:translateY(-3px)}
+.bucket .big{font-size:38px;line-height:1}
+.bucket b{font:900 17px Nunito;color:var(--ink);display:block}
+.bucket small{color:var(--muted);font-size:12px}
+.b-hot{background:#FFE7E3}.b-rising{background:#E3EBFF}.b-early{background:#DDF8EC}
+
+/* tabs + ranking */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.tab{background:#fff}
+.tab[aria-selected=true]{background:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.game{padding:14px;display:flex;flex-direction:column;gap:10px;text-decoration:none}
+.game:hover{border-color:var(--blue)}
+.g-top{display:flex;gap:12px;align-items:center}
+.icon{width:58px;height:58px;border-radius:14px;border:var(--bd);background:var(--bg) center/cover;flex:none}
+.g-top h3{font-size:16px;line-height:1.15}
+.g-top small{color:var(--muted);font-size:12px}
+.ring{--c:var(--blue);margin-left:auto;flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  background:conic-gradient(var(--c) calc(var(--v)*1%),var(--grid) 0);border:var(--bd)}
+.ring span{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;font:900 16px Nunito;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center}
+.stats div{background:var(--bg);border-radius:10px;padding:6px 2px}
+.stats b{display:block;font:900 15px Nunito;color:var(--ink)} .stats small{font-size:11px;color:var(--muted)}
+.up{color:#1f9d6c!important}.down{color:var(--red)!important}
+.spark{height:34px;width:100%}
+.bars{display:flex;gap:4px;height:6px}
+.bars i{flex:1;border-radius:3px;background:var(--grid);position:relative;overflow:hidden}
+.bars i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--blue)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font:700 11px Nunito;padding:2px 8px;border-radius:99px;background:var(--bg);border:2px solid var(--grid)}
+.empty{padding:26px;text-align:center;color:var(--muted)}
+
+/* listas */
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.list{padding:16px}
+.list h3{font-size:16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:2px dashed var(--grid);font-size:13.5px}
+.row a{text-decoration:none;font-weight:600;color:var(--ink)} .row a:hover{color:var(--blue)}
+.row span{color:var(--muted);white-space:nowrap;font-size:12px}
+
+/* lab */
+.lab{padding:22px;background:linear-gradient(135deg,#fff 60%,#FFF3C9)}
+.lab-grid{display:grid;grid-template-columns:2fr 1fr;gap:22px}
+.idea{padding:12px 14px;border:2px solid var(--ink);border-radius:14px;background:#fff;margin-bottom:10px}
+.idea b{font:800 15px Nunito;color:var(--ink);display:block}
+.gbar{display:flex;align-items:center;gap:8px;margin:7px 0;font:700 13px Nunito;color:var(--ink)}
+.gbar i{height:14px;border-radius:7px;background:var(--gold);border:2px solid var(--ink);min-width:14px}
+footer{margin:40px auto 60px;text-align:center;color:var(--muted);font-size:12.5px}
+footer img{height:70px;mix-blend-mode:multiply;display:block;margin:0 auto 6px}
+
+@media(max-width:860px){.funnel,.buckets,.lab-grid{grid-template-columns:1fr}.brand img{height:64px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top">
+      <div class="brand">
+        <img src="assets/logo-mark.png" alt="Logo Bithouse Studio">
+        <div>
+          <h1>Roblox Trend Radar</h1>
+          <small>BITHOUSE STUDIO · ATIVOS E MAPAS 3D PARA ROBLOX</small>
+        </div>
+      </div>
+      <div class="live">
+        <div class="card" id="status"><span class="pulse"></span><span id="statusTxt">Conectando…</span></div>
+        <button id="refresh" type="button">↻ Atualizar agora</button>
+      </div>
+    </div>
+    <div class="banner" id="demo">⚠️ Dados de demonstração. O primeiro ciclo do GitHub Actions vai substituir isto pelos dados reais.</div>
+  </header>
+
+  <section aria-labelledby="t-fontes">
+    <div class="sec-title"><h2 id="t-fontes">Fontes conectadas</h2><span>status de cada site na última coleta</span></div>
+    <div class="funnel" id="funnel"></div>
+
+    <div class="flow">
+      <div class="arrow">▼</div>
+      <div class="step">Normalização dos dados</div>
+      <div class="arrow">▼</div>
+      <div class="step gold">Trend Score 0–100</div>
+      <div class="arrow">▼</div>
+      <div class="buckets" id="buckets"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-rank" id="ranking">
+    <div class="sec-title"><h2 id="t-rank">Ranking de jogos</h2><span id="rankNote"></span></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="grid" id="games"></div>
+  </section>
+
+  <section aria-labelledby="t-sinais">
+    <div class="sec-title"><h2 id="t-sinais">Sinais da internet e do mercado</h2></div>
+    <div class="lists" id="lists"></div>
+  </section>
+
+  <section aria-labelledby="t-lab">
+    <div class="sec-title"><h2 id="t-lab">💡 Bit House Lab</h2><span>análise de oportunidade</span></div>
+    <div class="card lab"><div class="lab-grid">
+      <div id="ideas"></div>
+      <div><h3 style="margin-bottom:8px">Gêneros em movimento</h3><div id="genres"></div></div>
+    </div></div>
+  </section>
+
+  <footer>
+    <img src="assets/logo-full.png" alt="Bithouse Studio">
+    Score = 30% momentum · 25% popularidade · 20% qualidade · 25% buzz externo.<br>
+    As ideias do Lab são heurísticas automáticas: ponto de partida, não decisão pronta.
+  </footer>
+</div>
+
+<script>
+const REFRESH_MS = 60000;           // a página reconsulta o data/radar.json a cada 60 s
+const STALE_MIN = 45;               // avisa se a coleta estiver mais velha que isso
+const $ = (s) => document.querySelector(s);
+const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (n) => n >= 1e6 ? (n / 1e6).toFixed(1) + ' mi' : n >= 1e4 ? Math.round(n / 1e3) + ' mil' : (n ?? 0).toLocaleString('pt-BR');
+
+const GROUPS = [
+  { title: 'ROBLOX DATA', color: 'var(--blue)', items: [
+    { id: 'explore', key: 'trending', name: 'Trending', url: 'https://www.roblox.com/charts' },
+    { id: 'explore', key: 'charts', name: 'Charts', url: 'https://www.roblox.com/charts' },
+    { id: 'explore', key: 'discovery', name: 'Discovery', url: 'https://www.roblox.com/discover' },
+    { id: 'devforum', name: 'DevForum', url: 'https://devforum.roblox.com' } ] },
+  { title: 'MERCADO DATA', color: 'var(--gold)', items: [
+    { id: 'rolimons', name: "Rolimon's", url: 'https://www.rolimons.com/games' },
+    { id: 'rovitals', name: 'RoVitals', url: 'https://rovitals.com' },
+    { id: 'bloxscout', name: 'BloxScout', url: 'https://bloxscout.com' },
+    { id: 'gamestats', name: 'Game Stats', url: 'https://create.roblox.com/docs/cloud/reference/features/universes' } ] },
+  { title: 'INTERNET DATA', color: 'var(--red)', items: [
+    { id: 'gtrends', name: 'Google Trends', url: 'https://trends.google.com/trending' },
+    { id: 'youtube', name: 'YouTube', url: 'https://www.youtube.com/results?search_query=roblox' },
+    { id: 'x', name: 'X / Twitter', url: 'https://x.com/search?q=roblox' },
+    { id: 'tiktok', name: 'TikTok', url: 'https://www.tiktok.com/tag/roblox' } ] },
+];
+const STATUS = { ok: 'ao vivo', error: 'falhou', needs_key: 'precisa de chave', link_only: 'só link', unavailable: 'sem API' };
+const CLASSES = {
+  hot: { label: '🔥 HOT', b: 'b-hot', desc: 'Já grande e ainda forte', c: 'var(--red)' },
+  rising: { label: '📈 RISING', b: 'b-rising', desc: 'Crescendo rápido', c: 'var(--blue)' },
+  early: { label: '💎 EARLY', b: 'b-early', desc: 'Novo, pequeno, promissor', c: 'var(--green)' },
+};
+
+let data = null, tab = 'hot', last = 0;
+
+function srcDetail(s, key) {
+  if (!s) return 'sem dados';
+  if (s.status === 'ok') {
+    const n = key && s.counts ? s.counts[key] : s.count;
+    return `${n ?? 0} itens · ${s.ms} ms`;
+  }
+  if (s.status === 'error') return esc(s.note || 'erro na coleta');
+  if (s.status === 'needs_key') return esc(s.note || 'configure a chave da API');
+  if (s.status === 'link_only') return 'sem API pública — abre o site';
+  return 'sem API gratuita';
+}
+
+function renderFunnel() {
+  $('#funnel').innerHTML = GROUPS.map((g) => `
+    <div class="card col"><h3><i style="background:${g.color}"></i>${g.title}</h3>
+    ${g.items.map((it) => { const s = data.sources[it.id] || {}; const st = s.status || 'unavailable';
+      return `<div class="src"><div><a href="${it.url}" target="_blank" rel="noopener">${it.name} ↗</a><em>${srcDetail(s, it.key)}</em></div>
+      <span class="pill ${st}"><i class="dot"></i>${STATUS[st]}</span></div>`; }).join('')}</div>`).join('');
+}
+
+function renderBuckets() {
+  const n = (c) => data.games.filter((g) => g.class === c).length;
+  $('#buckets').innerHTML = Object.entries(CLASSES).map(([k, c]) =>
+    `<div class="card bucket ${c.b}" data-go="${k}"><span class="big num">${n(k)}</span><div><b>${c.label}</b><small>${c.desc}</small></div></div>`).join('');
+  document.querySelectorAll('[data-go]').forEach((el) => el.onclick = () => { tab = el.dataset.go; renderRank(); $('#ranking').scrollIntoView(); });
+}
+
+function spark(arr, color) {
+  if (!arr || arr.length < 2) return '';
+  const w = 240, h = 34, mn = Math.min(...arr), mx = Math.max(...arr), r = mx - mn || 1;
+  const pts = arr.map((v, i) => `${(i / (arr.length - 1) * w).toFixed(1)},${(h - 4 - ((v - mn) / r) * (h - 8)).toFixed(1)}`).join(' ');
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function gameCard(g) {
+  const c = CLASSES[g.class]?.c || 'var(--blue)';
+  const gr = g.growthPct;
+  const bars = ['momentum', 'popularity', 'quality', 'buzz'].map((k) => `<i title="${k}: ${g.components[k]}" style="--w:${g.components[k]}%"></i>`).join('');
+  return `<a class="card game" href="${esc(g.url)}" target="_blank" rel="noopener">
+    <div class="g-top"><div class="icon" style="${g.icon ? `background-image:url('${esc(g.icon)}')` : ''}"></div>
+      <div><h3>${esc(g.name)}</h3><small>${esc(g.creator || g.genre || '')}</small></div>
+      <div class="ring" style="--v:${g.score};--c:${c}"><span>${g.score}</span></div></div>
+    <div class="stats">
+      <div><b>${fmt(g.ccu)}</b><small>jogando</small></div>
+      <div><b class="${gr > 0 ? 'up' : gr < 0 ? 'down' : ''}">${gr === null ? '—' : (gr > 0 ? '+' : '') + gr + '%'}</b><small>vs 1h</small></div>
+      <div><b>${g.likeRatio === null ? '—' : g.likeRatio + '%'}</b><small>aprovação</small></div></div>
+    ${spark(g.spark, c)}
+    <div class="bars" title="momentum · popularidade · qualidade · buzz">${bars}</div>
+    <div class="tags">${g.genre ? `<span class="tag">${esc(g.genre)}</span>` : ''}${g.ageDays !== null ? `<span class="tag">${g.ageDays} dias</span>` : ''}${g.mentions.googleTrends ? '<span class="tag">Google Trends</span>' : ''}${g.mentions.devforum ? '<span class="tag">DevForum</span>' : ''}</div>
+  </a>`;
+}
+
+function renderRank() {
+  const tabs = [...Object.entries(CLASSES).map(([k, c]) => [k, c.label]), ['all', 'Todos']];
+  $('#tabs').innerHTML = tabs.map(([k, l]) => `<button class="tab" role="tab" aria-selected="${tab === k}" data-t="${k}">${l}</button>`).join('');
+  document.querySelectorAll('.tab').forEach((b) => b.onclick = () => { tab = b.dataset.t; renderRank(); });
+  const list = data.games.filter((g) => tab === 'all' || g.class === tab);
+  $('#games').innerHTML = list.length ? list.map(gameCard).join('') :
+    `<div class="card empty" style="grid-column:1/-1">Nenhum jogo nesta categoria agora. ${data.games.length ? '' : 'A coleta ainda não trouxe jogos — veja o status das fontes acima.'}</div>`;
+  $('#rankNote').textContent = `${list.length} jogos · barras: momentum, popularidade, qualidade, buzz`;
+}
+
+function renderLists() {
+  const box = (title, pill, rows) => `<div class="card list"><h3>${title}<span class="pill ${pill}"><i class="dot"></i>${STATUS[pill] || pill}</span></h3>${rows || '<div class="empty">Sem dados nesta coleta.</div>'}</div>`;
+  const row = (t, side, url) => `<div class="row">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(t)}</a>` : `<a>${esc(t)}</a>`}<span>${esc(side)}</span></div>`;
+  const st = (id) => data.sources[id]?.status || 'unavailable';
+  $('#lists').innerHTML =
+    box('Google Trends', st('gtrends'), data.google.slice(0, 8).map((t) => row(t.title, `${t.geo}${t.traffic ? ' · ' + t.traffic : ''}`, 'https://trends.google.com/trending?geo=' + t.geo)).join('')) +
+    box('DevForum', st('devforum'), data.devforum.slice(0, 8).map((t) => row(t.title, fmt(t.views) + ' views', t.url)).join('')) +
+    box("Rolimon's · mais jogados", st('rolimons'), data.rolimons.slice(0, 8).map((t) => row(t.name, fmt(t.players), 'https://www.rolimons.com/games')).join('')) +
+    box('YouTube · roblox (7 dias)', st('youtube'), data.youtube.slice(0, 8).map((t) => row(t.title, fmt(t.views) + ' views', t.url)).join(''));
+}
+
+function renderLab() {
+  const ideas = data.lab?.ideas || [];
+  $('#ideas').innerHTML = ideas.length ? ideas.map((i) => `<div class="idea"><b>${i.url ? `<a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>` : esc(i.title)}</b>${esc(i.text)}</div>`).join('')
+    : '<div class="empty">Sem oportunidades detectadas nesta coleta.</div>';
+  const gs = data.lab?.genres || [], mx = Math.max(1, ...gs.map((g) => g.count));
+  $('#genres').innerHTML = gs.length ? gs.map((g) => `<div class="gbar"><i style="width:${g.count / mx * 100}%"></i>${esc(g.genre)} · ${g.count}</div>`).join('') : '<div class="empty">—</div>';
+}
+
+function renderStatus() {
+  const min = (Date.now() - new Date(data.generatedAt)) / 60000;
+  const stale = min > STALE_MIN;
+  $('#status').className = 'card' + (stale ? ' stale' : '');
+  $('#statusTxt').textContent = `${stale ? 'Dados desatualizados · ' : 'Ao vivo · '}coleta há ${min < 1 ? 'menos de 1 min' : Math.round(min) + ' min'} · confere de novo em 1 min`;
+  $('#demo').style.display = data.demo ? 'block' : 'none';
+}
+
+async function load(manual) {
+  try {
+    const r = await fetch('data/radar.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const changed = !data || d.generatedAt !== data.generatedAt;
+    data = d; last = Date.now();
+    if (changed || manual) { renderFunnel(); renderBuckets(); renderRank(); renderLists(); renderLab(); }
+    renderStatus();
+  } catch (e) {
+    $('#statusTxt').textContent = 'Não consegui ler data/radar.json — a coleta já rodou? (Actions → Atualizar Radar)';
+  }
+}
+$('#refresh').onclick = () => load(true);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
+load(); setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>

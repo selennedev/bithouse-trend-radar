@@ -1,0 +1,643 @@
+{
+ "generatedAt": "2026-10-05T22:39:50.467Z",
+ "demo": true,
+ "sources": {
+  "explore": {
+   "status": "ok",
+   "ms": 0,
+   "count": 9,
+   "counts": {
+    "trending": 4,
+    "charts": 3,
+    "discovery": 2
+   }
+  },
+  "devforum": {
+   "status": "ok",
+   "ms": 0,
+   "count": 3
+  },
+  "rolimons": {
+   "status": "ok",
+   "ms": 0,
+   "count": 3
+  },
+  "gamestats": {
+   "status": "ok",
+   "ms": 0,
+   "count": 9
+  },
+  "gtrends": {
+   "status": "ok",
+   "ms": 0,
+   "count": 3
+  },
+  "youtube": {
+   "status": "needs_key",
+   "ms": 0,
+   "count": 0,
+   "note": "Defina YOUTUBE_API_KEY"
+  },
+  "rovitals": {
+   "status": "link_only",
+   "ms": 0,
+   "count": 0
+  },
+  "bloxscout": {
+   "status": "link_only",
+   "ms": 0,
+   "count": 0
+  },
+  "x": {
+   "status": "unavailable",
+   "ms": 0,
+   "count": 0
+  },
+  "tiktok": {
+   "status": "unavailable",
+   "ms": 0,
+   "count": 0
+  }
+ },
+ "games": [
+  {
+   "universeId": "9001",
+   "name": "Demo Obby Tycoon",
+   "creator": "Demo Studio",
+   "genre": "Tycoon",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 84000,
+   "visits": 31920000,
+   "favorites": 504000,
+   "likeRatio": 91,
+   "votes": 5000,
+   "ageDays": 400,
+   "growthPct": 12.4,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 82,
+   "class": "hot",
+   "spark": [
+    61627,
+    62951,
+    61465,
+    59544,
+    59961,
+    63339,
+    67581,
+    69794,
+    68950,
+    66833,
+    66397,
+    69049,
+    73360,
+    76372,
+    76324,
+    74267,
+    73100,
+    74903,
+    79025,
+    82685,
+    83524,
+    81779,
+    80061,
+    80957
+   ]
+  },
+  {
+   "universeId": "9009",
+   "name": "Demo Zombie Café",
+   "creator": "Demo Studio",
+   "genre": "Horror",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 980,
+   "visits": 372400,
+   "favorites": 5880,
+   "likeRatio": 90,
+   "votes": 5000,
+   "ageDays": 8,
+   "growthPct": 71.5,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 82,
+   "class": "early",
+   "spark": [
+    702,
+    677,
+    672,
+    703,
+    754,
+    789,
+    788,
+    764,
+    751,
+    772,
+    820,
+    862,
+    872,
+    852,
+    832,
+    842,
+    885,
+    933,
+    954,
+    939,
+    916,
+    916,
+    951,
+    1002
+   ]
+  },
+  {
+   "universeId": "9003",
+   "name": "Demo Swim Race",
+   "creator": "Demo Studio",
+   "genre": "Sports",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 26500,
+   "visits": 10070000,
+   "favorites": 159000,
+   "likeRatio": 86,
+   "votes": 5000,
+   "ageDays": 120,
+   "growthPct": 9.8,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 81,
+   "class": "hot",
+   "spark": [
+    18700,
+    18093,
+    18225,
+    19291,
+    20629,
+    21327,
+    21061,
+    20393,
+    20255,
+    21092,
+    22452,
+    23402,
+    23387,
+    22738,
+    22370,
+    22939,
+    24239,
+    25394,
+    25659,
+    25108,
+    24566,
+    24849,
+    26014,
+    27308
+   ]
+  },
+  {
+   "universeId": "9002",
+   "name": "Demo Taco Idle",
+   "creator": "Demo Studio",
+   "genre": "Simulator",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 41000,
+   "visits": 15580000,
+   "favorites": 246000,
+   "likeRatio": 88,
+   "votes": 5000,
+   "ageDays": 220,
+   "growthPct": 6.1,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 80,
+   "class": "hot",
+   "spark": [
+    30191,
+    29466,
+    28528,
+    28732,
+    30381,
+    32451,
+    33531,
+    33119,
+    32086,
+    31873,
+    33168,
+    35272,
+    36742,
+    36719,
+    35715,
+    35145,
+    36025,
+    38037,
+    39823,
+    40233,
+    39381,
+    38543,
+    38980,
+    40783
+   ]
+  },
+  {
+   "universeId": "9007",
+   "name": "Demo Map Explorer",
+   "creator": "Demo Studio",
+   "genre": "Adventure",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 2100,
+   "visits": 798000,
+   "favorites": 12600,
+   "likeRatio": 94,
+   "votes": 5000,
+   "ageDays": 12,
+   "growthPct": 58.9,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 79,
+   "class": "early",
+   "spark": [
+    1525,
+    1580,
+    1559,
+    1506,
+    1496,
+    1562,
+    1670,
+    1745,
+    1744,
+    1692,
+    1663,
+    1708,
+    1811,
+    1903,
+    1924,
+    1880,
+    1837,
+    1860,
+    1952,
+    2054,
+    2098,
+    2068,
+    2017,
+    2017
+   ]
+  },
+  {
+   "universeId": "9008",
+   "name": "Demo Block Builder",
+   "creator": "Demo Studio",
+   "genre": "Building",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 1600,
+   "visits": 608000,
+   "favorites": 9600,
+   "likeRatio": 92,
+   "votes": 5000,
+   "ageDays": 20,
+   "growthPct": 44,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": true,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 75,
+   "class": "early",
+   "spark": [
+    1183,
+    1167,
+    1127,
+    1119,
+    1169,
+    1251,
+    1309,
+    1308,
+    1269,
+    1246,
+    1281,
+    1359,
+    1429,
+    1445,
+    1412,
+    1379,
+    1396,
+    1466,
+    1544,
+    1578,
+    1555,
+    1516,
+    1516,
+    1574
+   ]
+  },
+  {
+   "universeId": "9004",
+   "name": "Demo Cozy Farm",
+   "creator": "Demo Studio",
+   "genre": "Simulator",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 12800,
+   "visits": 4864000,
+   "favorites": 76800,
+   "likeRatio": 93,
+   "votes": 5000,
+   "ageDays": 45,
+   "growthPct": 31.2,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": true,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 72,
+   "class": "rising",
+   "spark": [
+    8573,
+    8636,
+    9151,
+    9797,
+    10134,
+    10006,
+    9683,
+    9617,
+    10021,
+    10678,
+    11137,
+    11129,
+    10816,
+    10638,
+    10913,
+    11541,
+    12099,
+    12227,
+    11961,
+    11699,
+    11835,
+    12398,
+    13023,
+    13290
+   ]
+  },
+  {
+   "universeId": "9005",
+   "name": "Demo Dungeon Run",
+   "creator": "Demo Studio",
+   "genre": "RPG",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 9400,
+   "visits": 3572000,
+   "favorites": 56400,
+   "likeRatio": 90,
+   "votes": 5000,
+   "ageDays": 80,
+   "growthPct": 24.7,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 70,
+   "class": "rising",
+   "spark": [
+    6219,
+    6598,
+    7072,
+    7320,
+    7225,
+    6988,
+    6940,
+    7237,
+    7719,
+    8056,
+    8051,
+    7820,
+    7690,
+    7892,
+    8353,
+    8762,
+    8856,
+    8661,
+    8469,
+    8569,
+    8982,
+    9442,
+    9637,
+    9502
+   ]
+  },
+  {
+   "universeId": "9006",
+   "name": "Demo Pet Kingdom",
+   "creator": "Demo Studio",
+   "genre": "Simulator",
+   "url": "https://www.roblox.com/",
+   "icon": "",
+   "ccu": 7300,
+   "visits": 2774000,
+   "favorites": 43800,
+   "likeRatio": 89,
+   "votes": 5000,
+   "ageDays": 150,
+   "growthPct": 18.3,
+   "tags": [],
+   "components": {
+    "momentum": 70,
+    "popularity": 60,
+    "quality": 80,
+    "buzz": 30
+   },
+   "mentions": {
+    "googleTrends": false,
+    "devforum": 0,
+    "youtubeViews": 0
+   },
+   "score": 68,
+   "class": "rising",
+   "spark": [
+    5028,
+    5397,
+    5589,
+    5516,
+    5332,
+    5294,
+    5525,
+    5899,
+    6161,
+    6157,
+    5978,
+    5877,
+    6033,
+    6392,
+    6710,
+    6783,
+    6631,
+    6482,
+    6559,
+    6880,
+    7237,
+    7389,
+    7284,
+    7106
+   ]
+  }
+ ],
+ "google": [
+  {
+   "title": "roblox novo evento (demo)",
+   "traffic": "20+",
+   "geo": "BR"
+  },
+  {
+   "title": "exemplo de busca (demo)",
+   "traffic": "5 mil+",
+   "geo": "US"
+  }
+ ],
+ "devforum": [
+  {
+   "title": "Exemplo de tópico do DevForum (demo)",
+   "views": 4200,
+   "likes": 80,
+   "replies": 31,
+   "url": "https://devforum.roblox.com/"
+  }
+ ],
+ "youtube": [],
+ "rolimons": [
+  {
+   "id": "1",
+   "name": "Demo Obby Tycoon",
+   "players": 84000,
+   "icon": ""
+  }
+ ],
+ "lab": {
+  "genres": [
+   {
+    "genre": "Simulator",
+    "count": 2,
+    "avgScore": 70
+   },
+   {
+    "genre": "Horror",
+    "count": 1,
+    "avgScore": 82
+   },
+   {
+    "genre": "Adventure",
+    "count": 1,
+    "avgScore": 79
+   },
+   {
+    "genre": "Building",
+    "count": 1,
+    "avgScore": 75
+   },
+   {
+    "genre": "RPG",
+    "count": 1,
+    "avgScore": 70
+   }
+  ],
+  "ideas": [
+   {
+    "title": "Demo Zombie Café: nicho abrindo",
+    "text": "Horror com só 980 jogadores e 90% de aprovação, crescendo 71.5% na última hora. Vale estudar o loop de jogo e avaliar uma versão com assets 3D mais caprichados.",
+    "url": "https://www.roblox.com/"
+   },
+   {
+    "title": "Demo Map Explorer: nicho abrindo",
+    "text": "Adventure com só 2.100 jogadores e 94% de aprovação, crescendo 58.9% na última hora. Vale estudar o loop de jogo e avaliar uma versão com assets 3D mais caprichados.",
+    "url": "https://www.roblox.com/"
+   },
+   {
+    "title": "Demo Block Builder: nicho abrindo",
+    "text": "Building com só 1.600 jogadores e 92% de aprovação, crescendo 44% na última hora. Vale estudar o loop de jogo e avaliar uma versão com assets 3D mais caprichados.",
+    "url": "https://www.roblox.com/"
+   },
+   {
+    "title": "Gênero em alta: Simulator",
+    "text": "2 jogos em ascensão/early nesse gênero agora (score médio 70). Bom momento para oferecer pacotes de assets e mapas para esse nicho."
+   },
+   {
+    "title": "Busca em alta: roblox novo evento (demo)",
+    "text": "Aparece no Google Trends (BR, 20+ buscas). Possível tema para conteúdo ou jogo."
+   }
+  ]
+ }
+}
